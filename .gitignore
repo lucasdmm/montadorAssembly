@@ -2,3 +2,5 @@
 *.exe
 
 vocabulario.exe
+
+.git/hooks/update
