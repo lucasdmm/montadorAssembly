@@ -23,14 +23,21 @@ token* create_token(int id, char *tipo, char *word){
 	return new_token;
 }
 
+_Bool isDigit(char c){
+	if (c >= '0' && c <= '9')
+		return 1;
+	else
+		return 0;
+}
+
 int isAlpha(char c){
-	if(c >= 'A' && c <= 'Z')
+	if((c >= 'a' && c <= 'z')||(c >= 'A' && c <= 'Z'))
 		return 1;
 	else
 		return 0;
 }
 int isAlphaHex(char c){
-	if(c >= 'A' && c <= 'F')
+	if((c >= 'a' && c <= 'f')||(c >= 'A' && c <= 'F')||(isDigt(c)))
 		return 1;
 	else
 		return 0;
@@ -42,14 +49,6 @@ int isBit(char c){
 	else
 		return 0;
 }
-
-_Bool isDigit(char c){
-	if (c >= '0' && c <= '9')
-		return 1;
-	else
-		return 0;
-}
-
 
 _Bool isNum(char *word){
 	char *c = word;	
@@ -262,3 +261,4 @@ int main(){
 
 	return 0;
 }
+
