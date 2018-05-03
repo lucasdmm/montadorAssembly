@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-
+//V2
 typedef struct tok {
 	unsigned int id;
 	char tipo[50];
