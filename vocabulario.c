@@ -30,20 +30,20 @@ _Bool isDigit(char c){
 		return 0;
 }
 
-int isAlpha(char c){
+_Bool isAlpha(char c){
 	if((c >= 'a' && c <= 'z')||(c >= 'A' && c <= 'Z'))
 		return 1;
 	else
 		return 0;
 }
-int isAlphaHex(char c){
+_Bool isAlphaHex(char c){
 	if((c >= 'a' && c <= 'f')||(c >= 'A' && c <= 'F')||(isDigt(c)))
 		return 1;
 	else
 		return 0;
 }
 
-int isBit(char c){
+_Bool isBit(char c){
 	if(c == '0' || c == '1')
 		return 1;
 	else
@@ -154,6 +154,89 @@ void insert_token(char *word, token *symbolTable){
 	Se o Identificador nao for palavra reservada, sera uma label
 */
 
+}
+
+<<<<<<< HEAD
+_Bool isNumeric(char c){
+	if(c < 58 && c > 47)
+		return 1;
+	return 0;
+}
+
+_Bool isAlpha(char c){
+	if(c < '#' && c > 47)
+		return 1;
+	return 0;
+}
+int reservedRegis(char *word){
+	FILE* fi;
+	fi = fopen("registradoresreservados.txt","r");
+	char str[255];
+	while(!feof(fi)){
+		fgets(str,255,fi);
+		if(strcmp(str,word)){
+			fclose(fi);
+			return 1;
+		}		
+	}
+	fclose(fi);
+	return 0;
+}
+
+
+int reservedInst(char *word){
+	FILE* fi;
+	fi = fopen("instrucoesreservadas.txt","r");
+	char str[255];
+	while(!feof(fi)){
+		fgets(str,255,fi);
+		if(strcmp(str,word)){
+			fclose(fi);
+			return 1;
+		}
+	}
+	fclose(fi);
+	return 0;
+
+char* getWord(char* str[1024]){
+	char linha[4][255];
+	int c=0;// ponteiro do caracter na linha
+	int x=0;// ponteiro da palavra 
+	int y=0;// ponteiro do caracter na palavra
+	while(str[c]!= '\n'){
+		linha[x][y] = str[c];
+		c++;
+		y++;
+		if((str[c]!= ' ')||(str[c]!= ',')){
+			x++;
+			y=0;
+		}	
+	}
+	return linha;
+}
+
+_Bool isLinha(char str[1024]){
+	char cAtual = NULL;
+	char cProx = NULL;
+	char word[255];
+	int c=0;
+	int x=0;
+	while(cAtual != '\n'){
+		word[x]= cAtual;
+		cAtual = cProx;
+		cProx = str[c];
+		c++;
+		x++;
+		if(cProx == ' ' {
+			word[x+1]='\0';
+			x=0;
+			if(cAtual == ':'){
+				sendC1(word);
+			}else{
+				sendC2(word);
+			}
+		}
+	}
 }
 
 void preprocess(FILE *inputFile){
